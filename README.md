@@ -4,13 +4,15 @@ Run the Ravenroot knowledge graph as a local [Model Context Protocol](https://mo
 
 ## Start locally
 
-Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and clone this repository:
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and clone this repository. On macOS or Linux:
 
 ```sh
 git clone https://github.com/ravenroot-ai/ravenroot-second-brain.git
 cd ravenroot-second-brain
 ./start-mcp.sh
 ```
+
+On Windows, run `./start-mcp.ps1` from PowerShell after cloning. Both scripts perform the same verification and start the stdio server.
 
 Use the absolute path to `start-mcp.sh` as the command for an MCP client that launches local **stdio** servers. The first start installs the pinned Python dependencies, rebuilds `second_brain/composed/graph.json`, verifies its SHA-256 against `second_brain/provenance.json`, and starts the server. Subsequent starts reuse the verified graph. Python 3.12 or 3.13 is selected by uv.
 

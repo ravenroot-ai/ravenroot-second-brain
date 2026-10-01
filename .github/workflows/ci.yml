@@ -27,3 +27,17 @@ jobs:
           uv run --no-sync python -m second_brain.verify_bundle
       - name: Test MCP tools and graph integrity
         run: uv run --no-sync pytest -q second_brain
+      - name: Start script speaks MCP over stdio
+        run: python scripts/smoke_stdio.py
+
+  windows-start:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+          enable-cache: true
+      - name: PowerShell start script speaks MCP over stdio
+        run: python scripts/smoke_stdio.py

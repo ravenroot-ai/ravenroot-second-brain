@@ -9,6 +9,12 @@ __pycache__/
 .env
 .env.*
 !.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.*
 
 # Rebuilt locally from the versioned parts; never commit the monolithic graph.
 /second_brain/graph.json
@@ -24,3 +30,6 @@ __pycache__/
 /.codex/
 /.claude/
 /.opencode/
+/.vscode/
+/.idea/
+/.mcp.json
