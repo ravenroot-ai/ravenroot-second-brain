@@ -1,0 +1,26 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+.DS_Store
+*.log
+.env
+.env.*
+!.env.example
+
+# Rebuilt locally from the versioned parts; never commit the monolithic graph.
+/second_brain/graph.json
+/second_brain/composed/
+/second_brain/cache/
+/graphify-out/
+/.graphify-runtime/
+
+# Local agent and client configuration does not belong in this distribution.
+/AGENTS.md
+/CLAUDE.md
+/.agents/
+/.codex/
+/.claude/
+/.opencode/

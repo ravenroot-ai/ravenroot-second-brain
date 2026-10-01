@@ -1,0 +1,11 @@
+{
+  "source_repository": "https://github.com/ravenroot-ai/ravenroot.git",
+  "built_at_commit": "194a456552d132060ab1bf5aa5ff1fca335e9e6b",
+  "nodes": 42160,
+  "relationships": 155006,
+  "communities": 1159,
+  "bytes": 118846437,
+  "sha256": "04f8b00ee850611ccb1a02d2a340a0899ced086516ccaf301c8cb1ec6f43fc44",
+  "graphify_runtime_version": "0.9.68",
+  "generation": "complete Graphify/Qwen extraction accepted on 2026-09-30"
+}

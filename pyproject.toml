@@ -1,0 +1,15 @@
+[project]
+name = "ravenroot-second-brain"
+version = "0.1.0"
+description = "Local MCP server for the Ravenroot Graphify knowledge graph"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "fastmcp==3.4.7",
+  "graphifyy==0.9.49",
+]
+
+[dependency-groups]
+dev = ["pytest==8.4.2"]
+
+[tool.pytest.ini_options]
+testpaths = ["second_brain"]

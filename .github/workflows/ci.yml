@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  second-brain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+          enable-cache: true
+      - name: Install pinned dependencies
+        run: uv sync --frozen --dev
+      - name: Compile
+        run: uv run --no-sync python -m py_compile second_brain/server.py second_brain/graph_parts.py second_brain/verify_bundle.py
+      - name: Verify bundled graph
+        run: |
+          uv run --no-sync python second_brain/graph_parts.py compose
+          uv run --no-sync python -m second_brain.verify_bundle
+      - name: Test MCP tools and graph integrity
+        run: uv run --no-sync pytest -q second_brain
