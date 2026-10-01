@@ -78,8 +78,10 @@ def _write_document(handle, keys: list[str], values: dict, lists: dict[str, Iter
 def _atomic_writer(target: Path):
     target.parent.mkdir(parents=True, exist_ok=True)
     fd, tmp = tempfile.mkstemp(prefix=f".{target.name}.", suffix=".tmp", dir=target.parent)
-    os.fchmod(fd, 0o644)
-    return os.fdopen(fd, "w", encoding="utf-8"), Path(tmp)
+    if hasattr(os, "fchmod"):
+        os.fchmod(fd, 0o644)
+    # Preserve Graphify's LF-only JSON bytes on Windows as well as Unix.
+    return os.fdopen(fd, "w", encoding="utf-8", newline="\n"), Path(tmp)
 
 
 def split(source: Path, parts_dir: Path, max_bytes: int = DEFAULT_MAX_BYTES) -> list[Path]:
