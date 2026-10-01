@@ -6,11 +6,11 @@ if (-not (Get-Command uv -ErrorAction SilentlyContinue)) {
 }
 
 # MCP over stdio reserves stdout for JSON-RPC.
-& uv sync --frozen --no-dev 1>&2
+& uv sync --frozen --no-dev | Out-Null
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-& uv run --no-sync python second_brain/graph_parts.py compose 1>&2
+& uv run --no-sync python second_brain/graph_parts.py compose | Out-Null
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-& uv run --no-sync python -m second_brain.verify_bundle 1>&2
+& uv run --no-sync python -m second_brain.verify_bundle | Out-Null
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 & uv run --no-sync python second_brain/server.py
 exit $LASTEXITCODE
